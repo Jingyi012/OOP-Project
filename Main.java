@@ -11,36 +11,45 @@ public class Main {
         Address address = new Address("UTM", "Johor Bahru", 8990, "Johor");
         admin = new Admin("admin", "password", "OOP", "020816-080612", "2222", "Famale", address, "011-1235678",
                 "ShortingStart@gmail.com");
-        displayMenu();
 
-        int op = in.nextInt();
-        in.nextLine();
-        switch (op) {
-            case 1:
-                // Code for handling Patient role
-                break;
-            case 2:
-                // Code for handling Doctor role
-                break;
-            case 3:
-                if (adminLogin()) {
+        boolean exit = false;
+        while (!exit) {
+
+            displayMenu();
+
+            int op = in.nextInt();
+            in.nextLine();
+            switch (op) {
+                case 1:
+                    // Code for handling Patient role
+                    break;
+                case 2:
+                    // Code for handling Doctor role
+                    break;
+                case 3:
+                    boolean loggedIn = false;
+                    while (!loggedIn) {
+                        loggedIn = adminLogin();
+                        if (!loggedIn) {
+                            System.out.println("Invalid username or password. Please try again.");
+                        }
+                    }
                     System.out.println("Login successful!");
 
                     // Perform admin operations
                     performAdminOperations();
-                } else {
-                    System.out.println("Invalid username or password. Access denied!");
-                }
+                    break;
 
-                break;
-            case 4:
-                System.out.println("Exiting...");
-                break;
-            default:
-                System.out.println("Invalid option. Please try again.");
-                displayMenu(); // Show the menu again if the option is invalid
-                break;
+                case 4:
+                    System.out.println("Exiting...");
+                     exit = true;
+                     break;
+                default:
+                    System.out.println("Invalid option. Please try again.\n");
+                    // Show the menu again if the option is invalid
+                    break;
 
+            }
         }
 
     }
