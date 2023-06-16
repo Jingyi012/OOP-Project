@@ -3,7 +3,7 @@ public class User {
     private String icNum;
     private String DOB;
     private String gender;
-    private Address address;
+    protected Address address;
     private String phone;
     private String email;
 
