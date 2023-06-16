@@ -1,24 +1,42 @@
 import java.util.Scanner;
 
 public class Main {
-    private static Admin admin;
+    // Initialize the admin
+    private static Admin admin = new Admin("admin", "password");;
 
     public static void main(String[] args) {
-        // Initialize the admin
-        admin = new Admin("admin", "password");
+        Scanner input = new Scanner (System.in);
+        int role;
+        //menu
+        System.out.println("----------Clinic Appointment System----------");
+        System.out.println("1. Admin\n2. Doctor\n3.Patient");
+        System.out.print("Enter your choice: ");
+        role = input.nextInt();
+
+        switch(role){
+            case 1: 
+                if (adminLogin()) {
+                    System.out.println("Login successful!");
+
+                    // Perform admin operations
+                    performAdminOperations();
+                } else {
+                    System.out.println("Invalid username or password. Access denied!");
+                }
+            break;
+            case 2: 
+            
+            break;
+            case 3: 
+            
+            break;
+        }
 
         // Perform admin login
-        if (adminLogin()) {
-            System.out.println("Login successful!");
-
-            // Perform admin operations
-            performAdminOperations();
-        } else {
-            System.out.println("Invalid username or password. Access denied!");
-        }
+        
     }
 
-    private static boolean adminLogin() {
+    public static boolean adminLogin() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter your username: ");
         String username = scanner.nextLine();
@@ -28,7 +46,7 @@ public class Main {
         return username.equals(admin.getUsername()) && password.equals(admin.getPassword());
     }
 
-    private static void performAdminOperations() {
+    public static void performAdminOperations() {
         Scanner scanner = new Scanner(System.in);
         boolean exit = false;
 
@@ -62,19 +80,24 @@ public class Main {
         }
     }
 
-    private static void addDoctor() {
+    public static void addDoctor() {
         // Logic to add a doctor to the system
         System.out.println("Doctor added successfully!");
     }
 
-    private static void editDoctor() {
+    public static void editDoctor() {
         // Logic to edit the details of a doctor in the system
         System.out.println("Doctor details updated successfully!");
     }
 
-    private static void deleteDoctor() {
+    public static void deleteDoctor() {
         // Logic to delete a doctor from the system
         System.out.println("Doctor deleted successfully!");
+    }
+
+    public static void addAppointment(){
+        
+        Appointment app = new Appointment(null, null, null, null)
     }
 }
 
