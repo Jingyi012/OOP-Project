@@ -2,6 +2,7 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class Main {
+
     public static Admin admin;
 
     public static void main(String[] args) throws FileNotFoundException {
@@ -64,6 +65,7 @@ public class Main {
         System.out.println("[3] Admin");
         System.out.print("[4] Exit");
         System.out.print("\nEnter Your Choice:");
+
     }
 
     public static boolean adminLogin() {
@@ -129,4 +131,5 @@ public class Main {
             }
         }
     }
+
 }
