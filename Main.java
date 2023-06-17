@@ -42,8 +42,8 @@ public class Main {
 
                 case 4:
                     System.out.println("Exiting...");
-                     exit = true;
-                     break;
+                    exit = true;
+                    break;
                 default:
                     System.out.println("Invalid option. Please try again.\n");
                     // Show the menu again if the option is invalid
@@ -56,7 +56,7 @@ public class Main {
 
     public static void displayMenu() {
         System.out.println("============================= ");
-        System.out.print("  Patient Appoinment System   ");
+        System.out.print("  Patient Appointment System   ");
         System.out.println("\n============================= ");
         System.out.println("----- Your Role -----");
         System.out.println("[1] Patient");
@@ -96,14 +96,25 @@ public class Main {
 
             switch (choice) {
                 case 1:
-                    admin.addDoctor();
+                    try {
+                        admin.addDoctor();
+                    } catch (Exception e) {
+                        System.out.println("An error occurred while adding a doctor: " + e.getMessage());
+                    }
                     break;
                 case 2:
-                    admin.editDoctor();
-
+                    try {
+                        admin.editDoctor();
+                    } catch (Exception e) {
+                        System.out.println("An error occurred while editing a doctor: " + e.getMessage());
+                    }
                     break;
                 case 3:
-                    admin.deleteDoctor();
+                    try {
+                        admin.deleteDoctor();
+                    } catch (Exception e) {
+                        System.out.println("An error occurred while deleting a doctor: " + e.getMessage());
+                    }
                     break;
                 case 4:
                     admin.displayDoctorList();
