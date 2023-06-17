@@ -1,3 +1,3 @@
 public interface Schedule {
-    public void setDateTime(); 
+    public void setDateTime(String a, String b); 
 }

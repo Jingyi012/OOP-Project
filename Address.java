@@ -37,12 +37,8 @@ public class Address {
         return state;
     }
     public String toString(){
-        return  "Address{" +
-                "street='" + street + '\'' +
-                ", city='" + city + '\'' +
-                ", state='" + state + '\'' +
-                ", postcode='" + postcode + '\'' +
-                '}';
+        return  street + ", " + city + ", "+ postcode + ", " +state;
+                
     }  
 
 }
