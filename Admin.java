@@ -270,49 +270,5 @@ public void displayDoctorList() {
         }
     }
 
-   /*public void updateDoctorFile() throws IOException {
-     try {
-        File file = new File("doctors.txt");
-        BufferedReader reader = new BufferedReader(new FileReader(file));
-        ArrayList<String> lines = new ArrayList<>();
-
-        String line;
-        while ((line = reader.readLine()) != null) {
-            lines.add(line);
-        }
-        reader.close();
-
-        FileWriter fileWriter = new FileWriter(file);
-
-        for (Doctor doctor : doctorList) {
-            String doctorDetails = doctor.getName() + "\t" + doctor.getIcNum() + "\t" + doctor.getDOB() + "\t" + doctor.getGender() + "\t" 
-                    + doctor.getAddress() + "\t" + doctor.getPhone() + "\t" + doctor.getEmail();
-
-            // Find the line to update
-            boolean updated = false;
-            for (int i = 0; i < lines.size(); i++) {
-                String currentLine = lines.get(i);
-                if (currentLine.startsWith(doctor.getName())) {
-                    lines.set(i, doctorDetails); // Replace the line with the updated details
-                    updated = true;
-                    break;
-                }
-            }
-
-            // If the doctor was not found in the file, add the new line
-            if (!updated) {
-                lines.add(doctorDetails);
-            }
-        }
-
-        // Write the modified content back to the file
-        for (String lineToUpdate : lines) {
-            fileWriter.write("\n" + lineToUpdate);
-        }
-        fileWriter.close();
-    } catch (IOException e) {
-        System.out.println("An error occurred while updating the doctor file: " + e.getMessage());
-        throw e; // Throw the exception to the calling code
-    }
-}*/
+   
 }
