@@ -60,7 +60,7 @@ public class Appointment implements Schedule{
         return appointmentStatus;
     }
     public void displayAppointmentInfo(){
-        System.out.printf("%-5d%-15s%-15s%-15s%-15s%-15s%-15s%-50s\n", appointmentID, patient.getName(), patient.getPhone(), patient.getIcNum(), appointmentDate, appointmentTime, doctor.getName(), reasonMakeAppointment);
+        System.out.printf("%-5d%-15s%-15s%-15s%-15s%-15s%-15s%-50s%-15s\n", appointmentID, patient.getName(), patient.getPhone(), patient.getIcNum(), appointmentDate, appointmentTime, doctor.getName(), reasonMakeAppointment, getAppointmentStatus());
         /* 
         System.out.println("Appointment Id: "+ appointmentID);
         System.out.println("Appointment Date: "+ appointmentDate);

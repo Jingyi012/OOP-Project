@@ -148,7 +148,7 @@ public class Main {
                                         int ch;
                                         do{
                                         System.out.println("Please choose the appointment detail you want to update.");
-                                        System.out.println("1. Personal details\n2. Appointment date and time\n3. Reason\n4. Doctor\5. Return");
+                                        System.out.println("1. Personal details\n2. Appointment date and time\n3. Reason\n4. Doctor\n5. Return");
                                         System.out.print("Enter your choice: ");
                                         ch = in.nextInt();
                                         in.nextLine();
@@ -288,7 +288,7 @@ public class Main {
                                 
                             break;
                             case 5: 
-                                
+                                displayAppointmentList(appointmentList);
                             break;
                             default: 
                         }
@@ -437,6 +437,8 @@ public class Main {
         Appointment appointment = new Appointment(date, time, reason, doc.get(choiceDoc-1), patient);
         patient.addAppointment(appointment);
         //show appointment info
+        System.out.println("Appointment details");
+        System.out.printf("%-5s%-15s%-15s%-15s%-15s%-15s%-15s%-50s%-15s\n", "ID", "Name", "Phone", "IC", "Date", "Time", "Doctor", "Reason", "Status");
         appointment.displayAppointmentInfo();
 
         return appointment;
@@ -452,7 +454,7 @@ public class Main {
 
     public static void displayAppointmentList(ArrayList<Appointment> app){
         System.out.println("--------------Appointment List--------------");
-        System.out.printf("%-5s%-15s%-15s%-15s%-15s%-15%-15s%-50s\n", "ID", "Name", "Phone", "IC", "Date", "Time", "Doctor", "Reason");
+        System.out.printf("%-5s%-15s%-15s%-15s%-15s%-15s%-15s%-50s%-15s\n", "ID", "Name", "Phone", "IC", "Date", "Time", "Doctor", "Reason", "Status");
         for(Appointment a:app){
             a.displayAppointmentInfo();
         }
