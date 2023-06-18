@@ -318,8 +318,8 @@ public class Main {
 
                 case 4:
                     System.out.println("Exiting...");
-                     exit = true;
-                     break;
+                    exit = true;
+                    break;
                 default:
                     System.out.println("Invalid option. Please try again.\n");
                     // Show the menu again if the option is invalid

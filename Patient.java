@@ -31,7 +31,7 @@ public class Patient extends User {
     public void displayAppointment(){
         displayInfo();
         System.out.println("--------------Appointment List--------------");
-        System.out.printf("%-5s%-15s%-15s%-50s%-15s\n", "No.","Date", "Time", "Reason", "Status");
+        System.out.printf("%-5s%-15s%-15s%-50s%-15s\n", "ID","Date", "Time", "Reason", "Status");
         for(Appointment a: appointment){
             System.out.printf("%-5d%-15s%-15s%-50s%-15s\n", a.getAppointmentID(), a.getAppointmentDate(), a.getAppointmentTime(), a.getReason(), a.getAppointmentStatus());
         }
