@@ -38,7 +38,9 @@ public class Address {
     }
     public String toString(){
         return  street + ", " + city + ", "+ postcode + ", " +state;
-                
     }  
+    public String getFullAddress(){
+        return street + " " + postcode + ", " + city + " " + state;
+    }
 
 }

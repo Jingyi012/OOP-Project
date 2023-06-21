@@ -49,6 +49,9 @@ public class Appointment implements Schedule{
     public Patient getPatient(){
         return patient;
     }
+    public Doctor getDoctor(){
+        return doctor;
+    }
     public void setDateTime(String date, String time){
         appointmentDate=date;
         appointmentTime=time;
@@ -60,7 +63,7 @@ public class Appointment implements Schedule{
         return appointmentStatus;
     }
     public void displayAppointmentInfo(){
-        System.out.printf("%-5d%-15s%-15s%-15s%-15s%-15s%-15s%-50s%-15s\n", appointmentID, patient.getName(), patient.getPhone(), patient.getIcNum(), appointmentDate, appointmentTime, doctor.getName(), reasonMakeAppointment, getAppointmentStatus());
+        System.out.printf("%-5d%-15s%-15s%-15s%-15s%-15s%-30s%-15s%-15s\n", appointmentID, patient.getName(), patient.getPhone(), patient.getIcNum(), appointmentDate, appointmentTime, reasonMakeAppointment, doctor.getName(), getAppointmentStatus());
         /* 
         System.out.println("Appointment Id: "+ appointmentID);
         System.out.println("Appointment Date: "+ appointmentDate);

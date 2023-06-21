@@ -30,10 +30,12 @@ public class Patient extends User {
 
     public void displayAppointment(){
         displayInfo();
-        System.out.println("--------------Appointment List--------------");
-        System.out.printf("%-5s%-15s%-15s%-50s%-15s\n", "ID","Date", "Time", "Reason", "Status");
+        System.out.println("\nAppointment List");
+        System.out.println("================");
+        System.out.printf("%-5s%-15s%-15s%-30s%-15s%-15s\n", "ID","Date", "Time", "Reason", "Doctor", "Status");
+        System.out.printf("%-5s%-15s%-15s%-30s%-15s%-15s\n", "--","----", "----", "------", "------", "------");
         for(Appointment a: appointment){
-            System.out.printf("%-5d%-15s%-15s%-50s%-15s\n", a.getAppointmentID(), a.getAppointmentDate(), a.getAppointmentTime(), a.getReason(), a.getAppointmentStatus());
+            System.out.printf("%-5d%-15s%-15s%-30s%-15s%-15s\n", a.getAppointmentID(), a.getAppointmentDate(), a.getAppointmentTime(), a.getReason(), a.getDoctor().getName(), a.getAppointmentStatus());
         }
     }
 
@@ -43,9 +45,14 @@ public class Patient extends User {
         do{
             System.out.println("---------Edit Patient Info--------");
             System.out.println("1. Name\n2. IC\n3. DOB\n4. Gender\n5. Phone\n6. Email\n7. Address\n8. Emergency Contact Name\n9. Emergency Contact Phone\n10. Relation to emergency contact\n11. Return");
-            System.out.print("Enter your choice: ");
-            choice = in.nextInt();
-            in.nextLine();
+            try{
+                System.out.print("Enter your choice: ");
+                choice = in.nextInt();
+                in.nextLine();
+            }catch(InputMismatchException ex){
+                in.nextLine();
+                System.out.println("Invalid choice, the input must be in number.");
+            }
             switch(choice){
                 case 1: 
                     System.out.print("Enter name: ");
@@ -80,11 +87,11 @@ public class Patient extends User {
                 case 7: 
                     System.out.print("Enter street: ");
                     String street = in.nextLine();
-                    System.out.print("Enter city: ");
-                    String city = in.nextLine();
                     System.out.print("Enter postcode: ");
                     int postcode = in.nextInt();
                     in.nextLine();
+                    System.out.print("Enter city: ");
+                    String city = in.nextLine();
                     System.out.print("Enter state: ");
                     String state = in.nextLine();
                     getAddress().setStreet(street);
@@ -114,21 +121,25 @@ public class Patient extends User {
                     break;
                 
             }
-            System.out.println("-----------Updated Patient Info---------");
-            displayInfo();
+            if(choice > 0 && choice < 11){
+                System.out.println("\nUpdated Patient Info: ");
+                displayInfo();
+            }
+            
 
         }while(choice != 11);
 
     }
 
     public void displayInfo(){
+        System.out.println("\n-----------Patient Info-----------");
         System.out.println("Name: " + getName());
         System.out.println("IC: " + getIcNum());
         System.out.println("DOB: " + getDOB());
         System.out.println("Gender: " + getGender());
         System.out.println("Phone: " + getPhone());
         System.out.println("Email: " + getEmail());
-        System.out.println("Address: " + getAddress().toString());
+        System.out.println("Address: " + getAddress().getFullAddress());
         System.out.println("Emergency Contact Name: " + eContact.getName());
         System.out.println("Emergency Contact Phone: " + eContact.getPhoneNumber());
         System.out.println("Relation to emergency contact: " + eContact.getRelationship());
