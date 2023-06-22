@@ -78,9 +78,10 @@ public class User {
         System.out.println("IC Number: " + icNum);
         System.out.println("Date of Birth: " + DOB);
         System.out.println("Gender: " + gender);
-        System.out.println("Address: " + address);
+        System.out.println("Address: " + address.getFullAddress());
         System.out.println("Phone: " + phone);
         System.out.println("Email: " + email);
     }
+
 
 }

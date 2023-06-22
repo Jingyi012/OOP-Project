@@ -12,10 +12,9 @@ public class Doctor extends User{
     }
 
 
-    public void displayAppointments(){
-      for(Appointment appointment : appointments){
-        appointment.displayAppointmentInfo();
-      }
+     public void displayInfo(){
+        System.out.println("\n-----------Doctor Info-----------");
+        super.displayInfo();
     }
 
    

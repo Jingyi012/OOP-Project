@@ -133,13 +133,7 @@ public class Patient extends User {
 
     public void displayInfo(){
         System.out.println("\n-----------Patient Info-----------");
-        System.out.println("Name: " + getName());
-        System.out.println("IC: " + getIcNum());
-        System.out.println("DOB: " + getDOB());
-        System.out.println("Gender: " + getGender());
-        System.out.println("Phone: " + getPhone());
-        System.out.println("Email: " + getEmail());
-        System.out.println("Address: " + getAddress().getFullAddress());
+        super.displayInfo();
         System.out.println("Emergency Contact Name: " + eContact.getName());
         System.out.println("Emergency Contact Phone: " + eContact.getPhoneNumber());
         System.out.println("Relation to emergency contact: " + eContact.getRelationship());
