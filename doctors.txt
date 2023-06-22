@@ -3,3 +3,4 @@ Ivelyn Wong	991313001232	13/1	female	hhaha, week, 67112, kl	0120323555	gig@gmail
 Goh	001122112211	11/22/2000	male	Jalan Mawah, Skudai, 81300, Johor	0122222112	goh@gmail.com
 Henry	991212019999	12/12/1999	male	Jalan Hang Tuah, Skudai, 81300, Johor	0169937443	henry@gmail.com
 Lynn	010321011344	21/3/2001	female	Jalan Hang Jebat, Skudai, 81300, Johor	0127784234	lynn@hotmail.com
+1	1	1	1	1, 1, 1, 1	1	1

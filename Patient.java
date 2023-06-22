@@ -118,6 +118,7 @@ public class Patient extends User {
             if(choice > 0 && choice < 11){
                 System.out.println("\nUpdated Patient Info: ");
                 displayInfo();
+                System.out.println();
             }
             
 
@@ -126,7 +127,7 @@ public class Patient extends User {
     }
 
     public void displayInfo(){
-        System.out.println("\n-----------Patient Info-----------");
+        System.out.println("-----------Patient Info-----------");
         super.displayInfo();
         System.out.println("Emergency Contact Name: " + eContact.getName());
         System.out.println("Emergency Contact Phone: " + eContact.getPhoneNumber());

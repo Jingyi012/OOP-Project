@@ -6,13 +6,14 @@ public class Main {
 
     public static Admin admin;
 
-    public static Appointment findAppointment(List<Appointment> appointmentList, int appointmentID) {
-        for (Appointment appointment : appointmentList) {
-            if (appointment.getAppointmentID() == appointmentID) {
-                return appointment;
-            }
-        }
-        return null; // Appointment not found
+    public static void clearScreen(){
+    //Clears Screen in java
+    try {
+        if (System.getProperty("os.name").contains("Windows"))
+            new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+        else
+            Runtime.getRuntime();
+        } catch (IOException | InterruptedException ex){}
     }
 
     public static void main(String[] args) throws FileNotFoundException {
@@ -40,6 +41,7 @@ public class Main {
                     int cho = 0;
                     int opt=1;
                     while(opt!=3){
+                        clearScreen();
                         System.out.println("-------Patient-------");
                         System.out.println("1. Walk In\n2. Take Appointment\n3. Return");
                         try{
@@ -52,7 +54,9 @@ public class Main {
                         }
                         if(opt==2){
                             do{
-                                System.out.println("\n\n1. Login\n2. Register\n3. Return");
+                                clearScreen();
+                                System.out.println("-------Appointment System-------");
+                                System.out.println("1. Login\n2. Register\n3. Return");
                                 try{
                                     System.out.print("Enter your choice: ");
                                     cho = in.nextInt();
@@ -65,7 +69,7 @@ public class Main {
 
                                 switch(cho){
                                     case 1:
-                                        
+                                        clearScreen();
                                         System.out.println("--------Login--------");
                                         System.out.print("Enter your IC number: ");
                                         String ic = in.nextLine();
@@ -81,12 +85,14 @@ public class Main {
                                         if(findPatient){
                                             int patientChoice;
                                             do{
+                                                clearScreen();
                                                 patientChoice = patientMenu(in);
                                                 switch(patientChoice){
                                                     //make appointment
                                                     case 1: 
                                                         char option='n';
                                                         do{
+                                                            System.out.println();
                                                             makeAppointment(in, patient, doctorList, appointmentList);
                                                             
                                                             System.out.print("\nDo you want to add another appointment?(y/n) : ");
@@ -99,10 +105,13 @@ public class Main {
                                                     case 2:
                                                         char conEdit = 'n';
                                                         do{
+                                                            clearScreen();
                                                             if(patient.getAppointment().size()>0){
                                                                 patient.displayAppointment();
                                                             } else {
-                                                                System.out.println("\nNo appointment yet.");
+                                                                System.out.println("No appointment yet.");
+                                                                System.out.print("Press enter to continue...");
+                                                                in.nextLine();
                                                                 break;
                                                             }
 
@@ -125,6 +134,7 @@ public class Main {
                                                             if(idfound){
                                                                 int ch;
                                                                 do{
+                                                                    clearScreen();
                                                                     ch=0;
                                                                     displayAppointmentInfo(tapp);
                                                                     System.out.println("\nPlease choose the appointment detail you want to update.");
@@ -136,26 +146,32 @@ public class Main {
                                                                     } catch (InputMismatchException ex){
                                                                         in.nextLine();
                                                                         System.out.println("\nInvalid choice. The input must be in number.");
+                                                                        System.out.print("Press enter to continue...");
+                                                                        in.nextLine();
                                                                         continue;
                                                                     }
                                                                     
                                                                     switch(ch){
                                                                         case 1: 
+                                                                            clearScreen();
                                                                             patient.editPatientInfo();
                                                                             break;
                                                                         case 2:
-                                                                            System.out.print("\nEnter appointment date: ");
+                                                                            
+                                                                            System.out.print("\nEnter new appointment date: ");
                                                                             String date = in.nextLine();
-                                                                            System.out.print("Enter appointment time: ");
+                                                                            System.out.print("Enter new appointment time: ");
                                                                             String time = in.nextLine();
                                                                             tapp.setDateTime(date, time);
                                                                             break;
                                                                         case 3:
-                                                                            System.out.print("Enter appointment reason: ");
+                                                                            
+                                                                            System.out.print("Enter new appointment reason: ");
                                                                             String r = in.nextLine();
                                                                             tapp.setReason(r);
                                                                             break;
                                                                         case 4:
+                                                                            clearScreen();
                                                                             displayDoctorList(doctorList);
                                                                             try{
                                                                                 System.out.print("Enter the No. of the doctor you selected: ");
@@ -163,9 +179,13 @@ public class Main {
                                                                                 tapp.setDoctor(doctorList.get(choiceDoc-1));
                                                                             } catch (IndexOutOfBoundsException ex){
                                                                                 System.out.println("\nThe doctor No. not found. Please try again.");
+                                                                                System.out.print("Press enter to continue...");
+                                                                                in.nextLine();
                                                                             } catch (InputMismatchException ex){
                                                                                 in.nextLine();
                                                                                 System.out.println("\nInvalid choice. The doctor No. must be in number.");
+                                                                                System.out.print("Press enter to continue...");
+                                                                                in.nextLine();
                                                                             }
                                                                             
                                                                             break;
@@ -173,6 +193,8 @@ public class Main {
                                                                             break;
                                                                         default:
                                                                             System.out.println("Invalid choice, please enter choice from 1-5");
+                                                                            System.out.print("Press enter to continue...");
+                                                                            in.nextLine();
                                                                             break;
                                                                     }
 
@@ -197,11 +219,14 @@ public class Main {
                                                         case 3: 
                                                             char delopt = 'Y';
                                                             while(delopt == 'Y'){
+                                                                clearScreen();
                                                                 //check patient's appointment list has appointment or not
                                                                 if(patient.getAppointment().size() > 0){
                                                                     patient.displayAppointment();
                                                                 } else {
-                                                                    System.out.println("\nNo appointment yet.");
+                                                                    System.out.println("No appointment yet.");
+                                                                    System.out.print("Press enter to continue...");
+                                                                    in.nextLine();
                                                                     break;
                                                                 }
                                                                 
@@ -245,10 +270,15 @@ public class Main {
                                                             break;
                                                         
                                                         case 4: 
+                                                            clearScreen();
                                                             if(patient.getAppointment().size() > 0){
                                                                 patient.displayAppointment();
+                                                                System.out.print("\nPress enter to continue...");
+                                                                in.nextLine();
                                                             } else {
-                                                                System.out.println("\nNo appointment yet.");
+                                                                System.out.println("No appointment yet.");
+                                                                System.out.print("Press enter to continue...");
+                                                                in.nextLine();
                                                             }
                                                             break;
                                                         
@@ -256,18 +286,21 @@ public class Main {
                                                             break;
                                                         
                                                         default:
-                                                            System.out.println("\nPlease enter number from 1-5");
+                                                            break;
                                                                 
                                                     }
                                                 }while(patientChoice != 5);
 
                                     } else {
                                         System.out.println("You haven't register yet. Please register first.");
+                                        System.out.print("Press enter to continue...");
+                                        in.nextLine();
                                         break;
                                     }
                                 break;
                                 case 2:
-                                    System.out.println("\n--------Register--------");
+                                    clearScreen();
+                                    System.out.println("--------Register--------");
                                     System.out.print("Enter your IC number: ");
                                     String ric = in.nextLine();
                                     boolean regPatientFound = false;
@@ -275,6 +308,8 @@ public class Main {
                                         if(ric.equals(patientList.get(i).getIcNum())){
                                             System.out.println("You already registered. Please log in.");
                                             regPatientFound = true;
+                                            System.out.print("Press enter to continue...");
+                                            in.nextLine();
                                             break;
                                         }
                                     }
@@ -317,10 +352,14 @@ public class Main {
                                         pAddress = new Address(street, city, postcode, state);
                                         patientList.add(new Patient(pname, ric, pDOB, gender, pAddress, pPhone, pEmail, eName, ePhone, eRelation));
                                         System.out.println("\nSuccessfully Registered. \n");
+                                        System.out.print("Press enter to continue...");
+                                        in.nextLine();
                                         
                                         } catch(InputMismatchException ex){
                                             in.nextLine();
                                             System.out.println("\nError data type. Postcode must be in number only\n");
+                                            System.out.print("Press enter to continue...");
+                                            in.nextLine();
                                         }
                                     }
                                 break;
@@ -335,23 +374,22 @@ public class Main {
                         }while(cho != 3);
                     }
                     else if(opt==1){
-                        
-                        Scanner input = new Scanner(System.in);
                         int option = 1;
                         while (option != 3) {
+                            clearScreen();
                             System.out.println("-----------Queue System-----------");
                             System.out.println("1. Get the queue number");
                             System.out.println("2. Check the queue number");
                             System.out.println("3. Exit");
                             
-                            System.out.print("Pleae enter your choice: ");
+                            System.out.print("Please enter your choice: ");
                             try{
-                            option = input.nextInt();
-                            input.nextLine();
+                            option = in.nextInt();
+                            in.nextLine();
                         
                             }
                             catch(InputMismatchException ex){
-                                input.nextLine();
+                                in.nextLine();
                                 System.out.println("Invalid choice, Please enter again");
                             }
                             System.out.println();
@@ -363,13 +401,16 @@ public class Main {
                                 System.out.println();
                                 System.out.println("----Successfully Added---");
                                 queue.getQueueNumber(patient);
-                                System.out.println();
+                                System.out.print("\nPress enter to continue...");
+                                in.nextLine();
                                 System.out.println();
                                 System.out.println();
                             } else if (option == 2) {
                                 System.out.print("Please key in your IC: ");
-                                String ic = input.nextLine();
+                                String ic = in.nextLine();
                                 queue.checkQueue(ic);
+                                System.out.print("\nPress enter to continue...");
+                                in.nextLine();
                                 System.out.println();
                                 System.out.println();
                                 System.out.println();
@@ -383,6 +424,7 @@ public class Main {
                     break;
                 case 2:
                     // Code for handling Doctor role
+                    clearScreen();
                     System.out.print("Hi Doctor, Please enter your IC: ");
                     String doctorIC=in.nextLine();
                     Doctor doctor=null;
@@ -400,54 +442,72 @@ public class Main {
                     boolean doctorExit=false;
 
                     do{
-                        
+                        clearScreen();
                         int doctorChoice=displayDoctorMenu(in);
                     
 
                       switch(doctorChoice){
                         case 1:
-                          System.out.println("Appointments assigned to Dr " +doctor.getName());
-                          boolean foundAppointment=false;
-                          System.out.printf("%-5s%-15s%-15s%-15s%-15s%-15s%-30s%-15s%-15s\n", "ID", "Name", "Phone", "IC", "Date", "Time", "Reason", "Doctor", "Status");
-                            System.out.printf("%-5s%-15s%-15s%-15s%-15s%-15s%-30s%-15s%-15s\n", "--", "----", "-----", "--", "----", "----", "------", "------", "------");
-                          for(Appointment appointment : appointmentList){
-                            if(appointment.getDoctor().getIcNum().equals(doctor.getIcNum())){
-                                appointment.displayAppointmentInfo();
-                              foundAppointment=true;
+                            clearScreen();
+                            boolean foundAppointment=false;
+                            for(Appointment appointment : appointmentList){
+                                if(appointment.getDoctor().getIcNum().equals(doctor.getIcNum())){
+                                    foundAppointment=true;
+                                    break;
+                                }
                             }
-                          }
-
-                          if(!foundAppointment){
+                            if(foundAppointment==true){
+                                System.out.println("Appointments assigned to Dr " +doctor.getName());
+                                System.out.printf("%-5s%-15s%-15s%-15s%-15s%-15s%-30s%-15s%-15s\n", "ID", "Name", "Phone", "IC", "Date", "Time", "Reason", "Doctor", "Status");
+                                System.out.printf("%-5s%-15s%-15s%-15s%-15s%-15s%-30s%-15s%-15s\n", "--", "----", "-----", "--", "----", "----", "------", "------", "------");
+                                for(Appointment appointment : appointmentList){
+                                    if(appointment.getDoctor().getIcNum().equals(doctor.getIcNum())){
+                                        appointment.displayAppointmentInfo();
+                                        foundAppointment=true;
+                                    }
+                                }
+                                System.out.println();
+                            }
+                            else{
                             System.out.println("\n\nNo appointments found!\n\n");
-                          }
-                        
-                          break;
+                            
+                            }
+                            System.out.print("Press enter to continue...");
+                            in.nextLine();
+                            break;
 
                         case 2:
-                          System.out.println("All appointments: ");
+                            clearScreen();
                           if(appointmentList.isEmpty()){
                             System.out.println("\n\nNo appointments found!\n\n");
                           }
                           else{
+                            System.out.println("All appointments: ");
                             System.out.printf("%-5s%-15s%-15s%-15s%-15s%-15s%-30s%-15s%-15s\n", "ID", "Name", "Phone", "IC", "Date", "Time", "Reason", "Doctor", "Status");
                             System.out.printf("%-5s%-15s%-15s%-15s%-15s%-15s%-30s%-15s%-15s\n", "--", "----", "-----", "--", "----", "----", "------", "------", "------");
                              for (Appointment appointment: appointmentList){
-                            appointment.displayAppointmentInfo();
-
+                                appointment.displayAppointmentInfo();
                             }
+                            System.out.println();
                           }
+                          System.out.print("Press enter to continue...");
+                          in.nextLine();
                           break;
 
                         case 3:
                         char cancopt;
+                        
                         do{
+                            clearScreen();
                           if(appointmentList.isEmpty()){
                             System.out.println("\n\nNo appointments found!\n\n");
+                            System.out.print("Press enter to continue...");
+                            in.nextLine();
                             break;
                           }
                           else{
                             displayAppointmentList(appointmentList);
-                            System.out.print("Enter the appointment ID to cancel: ");
+                            System.out.print("\nEnter the appointment ID to cancel: ");
 
                             try{
                             int cancelappointmentId = in.nextInt();
@@ -472,6 +532,7 @@ public class Main {
                           else{
                             System.out.println("Appointment not found. Cancel Failed");
                           }
+
                         }
                         catch(IndexOutOfBoundsException ex){
                                 System.out.println("\n The Patient ID not found. Please try again.");
@@ -484,7 +545,7 @@ public class Main {
                         boolean validInput=false;
                         do{ 
                             
-                            System.out.println("\nDo you want to continue cancelled appointment?(Y/N):");
+                            System.out.print("\nDo you want to continue cancelled appointment?(Y/N):");
                             String choice=in.nextLine().toUpperCase();
                             cancopt=choice.charAt(0);
                             if(cancopt=='Y'|| cancopt=='N'){
@@ -498,45 +559,56 @@ public class Main {
                           break;
 
                           case 4:
+                            clearScreen();
                            if(appointmentList.isEmpty()){
                             System.out.println("\n\nNo appointments found!\n");
+                            System.out.print("Press enter to continue...");
+                            in.nextLine();
                           }
                           else{
                             boolean cancelApp=true;
                             while(cancelApp){
                             try{
-                                    displayAppointmentList(appointmentList);
-                                    System.out.print("Enter the appointment ID to update the status: ");
-                                    int editAppointmentId = in.nextInt(); 
-                                    in.nextLine();
+                                clearScreen();
+                                displayAppointmentList(appointmentList);
+                                System.out.print("\nEnter the appointment ID to update the status: ");
+                                int editAppointmentId = in.nextInt(); 
+                                in.nextLine();
                                     
-                          
                             Appointment appointment = findAppointment(appointmentList, editAppointmentId);
 
                             if(appointment!=null){
+                                clearScreen();
                               displayAppointmentInfo(appointment);
                               System.out.print("Approve appointment? (Y/N):");
                               String approval=in.nextLine().toUpperCase();
 
                               if(approval.equals("Y")){
                                 appointment.setAppointmentStatus("Approved");
-                                System.out.println("Appointment Approved.");
-                                System.out.println("Updated Appointment List:");
+                                System.out.println("\nAppointment Approved.");
+                                System.out.println("\nUpdated Appointment List:");
 
                                 displayAppointmentList(appointmentList);
                               }
                               else{
                                 appointment.setAppointmentStatus("Not Approved");
-                                System.out.println("Appointment not approved");
-                                System.out.println("Updated Appointment List:");
+                                System.out.println("\nAppointment not approved");
+                                System.out.println("\nUpdated Appointment List:");
 
                                 displayAppointmentList(appointmentList);
 
                               }
                              
                             }else{
-                              System.out.println("Appointment not found.");
+                              System.out.println("\nAppointment not found.\n");
                             }
+
+         
+                            }catch(InputMismatchException ex){
+                                in.nextLine();
+                                System.out.println("Invalid Input. Please enter a valid appointment ID (in number)");
+                            }
+
                             boolean validResponse=false;
                             while(!validResponse){
                                 System.out.print("Do you want to continue update another appointment status? (Y/N): ");
@@ -553,18 +625,13 @@ public class Main {
                                 }
                             }
 
-         
-                        }catch(InputMismatchException ex){
-                            in.nextLine();
-                            System.out.println("Invalid Input. Please enter a valid appointment ID (in number)");
-                        }
                     }
-
 
                         }
                             break;
 
                             case 5:
+                                clearScreen();
                                 queue.updateQueue();
                                 System.out.println();
                                 System.out.println();
@@ -586,6 +653,7 @@ public class Main {
 
                     break;
                 case 3:
+                  clearScreen();
                     boolean loggedIn = false;
                     while (!loggedIn) {
                         loggedIn = adminLogin();
@@ -614,6 +682,7 @@ public class Main {
     }
 
     public static void displayMenu() {
+        clearScreen();
         System.out.println("============================= ");
         System.out.println("       Hospital System        ");
         System.out.println("============================= ");
@@ -686,7 +755,7 @@ public class Main {
     public static int patientMenu(Scanner in) {
         int choice = 0;
 
-        System.out.println("\n-----Patient Menu-----");
+        System.out.println("-----Patient Menu-----");
         System.out.println("1. Make appointment");
         System.out.println("2. Edit appointment");
         System.out.println("3. Cancel appointment");
@@ -702,6 +771,8 @@ public class Main {
         } catch (InputMismatchException ex) {
             in.nextLine();
             System.out.println("Please enter number from 1 to 5.");
+            System.out.print("Press enter to continue...");
+            in.nextLine();
         }
 
         return choice;
@@ -743,7 +814,7 @@ public class Main {
         String time = in.nextLine();
         System.out.print("Enter reason of making appointment: ");
         String reason = in.nextLine();
-
+        System.out.println();
         displayDoctorList(doc);
         int choiceDoc;
         do {
@@ -780,7 +851,8 @@ public class Main {
     }
 
     public static void displayAppointmentList(ArrayList<Appointment> app) {
-        System.out.println("--------------Appointment List--------------");
+        System.out.println("Appointment List");
+        System.out.println("================");
         System.out.printf("%-5s%-15s%-15s%-15s%-15s%-15s%-30s%-15s%-15s\n", "ID", "Name", "Phone", "IC", "Date", "Time",
                 "Reason", "Doctor", "Status");
         System.out.printf("%-5s%-15s%-15s%-15s%-15s%-15s%-30s%-15s%-15s\n", "--", "----", "-----", "--", "----", "----",
@@ -799,6 +871,16 @@ public class Main {
         System.out.printf("%-5s%-15s%-15s%-15s%-15s%-15s%-30s%-15s%-15s\n", "--", "----", "-----", "--", "----", "----",
                 "------", "------", "------");
         a.displayAppointmentInfo();
+    }
+
+    
+    public static Appointment findAppointment(List<Appointment> appointmentList, int appointmentID) {
+        for (Appointment appointment : appointmentList) {
+            if (appointment.getAppointmentID() == appointmentID) {
+                return appointment;
+            }
+        }
+        return null; // Appointment not found
     }
 
 }
