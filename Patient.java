@@ -3,12 +3,6 @@ import java.util.*;
 public class Patient extends User {
     private EmergencyContact eContact;
     private ArrayList<Appointment> appointment;
-
-    public Patient(){
-        super("", "", "", "", null, "", "");
-        setEmergencyContact("", "", "");
-        appointment = new ArrayList<Appointment>();
-    }
     
     public Patient(String name, String icNum, String DOB, String gender, Address address, String phone, String email, String cname, String cphone, String relation){
         super(name, icNum, DOB, gender, address, phone, email);
