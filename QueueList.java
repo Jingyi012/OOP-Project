@@ -2,7 +2,6 @@ import java.util.*;
 
 public class QueueList {
     ArrayList<WalkInPatient> patients = new ArrayList<WalkInPatient>();
-    private int index;
     public QueueList() {
 
     }
@@ -33,16 +32,33 @@ public class QueueList {
 
     public void updateQueue() {
         Scanner input = new Scanner(System.in);
-        System.out.println("Would you like to call this patient to your room?");
-        System.out.println("Name: " + patients.get(0).getName());
-        System.out.println("IC: " + patients.get(0).getIC());
-        System.out.println("Phone Number: " + patients.get(0).getPhone());
-        System.out.println("1. Yes");
-        System.out.println("2. No");
-        System.out.print("Choice: ");
-        int choice = input.nextInt();
-        if (choice == 1) {
-            patients.remove(0);
+        if(patients.size()==0){
+            System.out.println("There is no patient in the queue list");
+            System.out.println("Press Enter to continue...");
+            input.nextLine(); 
+        }
+        else{
+            boolean validChoice = false;
+            int choice = 0;
+            while (!validChoice) {
+                System.out.println("Would you like to call this patient to your room?");
+                System.out.println("Name: " + patients.get(0).getName());
+                System.out.println("IC: " + patients.get(0).getIC());
+                System.out.println("Phone Number: " + patients.get(0).getPhone());
+                System.out.println("1. Yes");
+                System.out.println("2. No");
+                System.out.print("Choice: ");
+                try {
+                    choice = input.nextInt();
+                    validChoice = true; 
+                } catch (InputMismatchException ex) {
+                    System.out.println("Invalid choice, Please enter again");
+                    input.nextLine(); 
+                }
+            }
+            if (choice == 1) {
+                patients.remove(0);
+            }
         }
     }
 

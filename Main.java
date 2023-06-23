@@ -374,14 +374,14 @@ public class Main {
                         }while(cho != 3);
                     }
                     else if(opt==1){
-                        int option = 1;
+                        int option = 0;
                         while (option != 3) {
                             clearScreen();
                             System.out.println("-----------Queue System-----------");
                             System.out.println("1. Get the queue number");
                             System.out.println("2. Check the queue number");
                             System.out.println("3. Exit");
-                            
+                            option = 0;
                             System.out.print("Please enter your choice: ");
                             try{
                             option = in.nextInt();
@@ -391,6 +391,8 @@ public class Main {
                             catch(InputMismatchException ex){
                                 in.nextLine();
                                 System.out.println("Invalid choice, Please enter again");
+                                System.out.println("Press Enter to continue...");
+                                in.nextLine(); 
                             }
                             System.out.println();
                             System.out.println();
@@ -636,6 +638,7 @@ public class Main {
                                 System.out.println();
                                 System.out.println();
                                 System.out.println();
+                            break;
 
                             case 6:
                             doctorExit=true;
