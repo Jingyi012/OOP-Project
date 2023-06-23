@@ -721,7 +721,9 @@ public class Main {
             System.out.print("\nSelect an operation:");
 
             int choice = scanner.nextInt();
-            scanner.nextLine(); // Consume the newline character
+            scanner.nextLine(); 
+
+            clearScreen();
             try {
                 switch (choice) {
                     case 1:
@@ -729,7 +731,6 @@ public class Main {
                         break;
                     case 2:
                         admin.editDoctor();
-
                         break;
                     case 3:
                         admin.deleteDoctor();
