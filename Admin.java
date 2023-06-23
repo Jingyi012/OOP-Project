@@ -38,6 +38,11 @@ public class Admin extends User {
         this.password = password;
     }
 
+    public void displayInfo(){
+        System.out.println("\n-----------Admin Info-----------");
+        super.displayInfo();
+    }
+
     public void addDoctor() throws IOException {
         Scanner scanner = new Scanner(System.in);
         System.out.println("\n-------Add Doctor Details-------");
