@@ -34,7 +34,7 @@ public class QueueList {
         Scanner input = new Scanner(System.in);
         if(patients.size()==0){
             System.out.println("There is no patient in the queue list");
-            System.out.println("Press Enter to continue...");
+            System.out.print("Press Enter to continue...");
             input.nextLine(); 
         }
         else{
