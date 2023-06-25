@@ -396,13 +396,14 @@ public class PatientAppointmentSystem {
                             }
                             System.out.println();
                             System.out.println();
+                            WalkInPatient patient = new WalkInPatient();
                             if (option == 1) {
-                                WalkInPatient patient = new WalkInPatient();
                                 patient.getPersonalDetail();
                                 queue.addQueue(patient);
                                 System.out.println();
                                 System.out.println("----Successfully Added---");
-                                queue.getQueueNumber(patient);
+                                int no=queue.getQueueNumber(patient);
+                                patient.setQueue(no);
                                 System.out.print("\nPress enter to continue...");
                                 in.nextLine();
                                 System.out.println();
@@ -410,7 +411,7 @@ public class PatientAppointmentSystem {
                             } else if (option == 2) {
                                 System.out.print("Please key in your IC: ");
                                 String ic = in.nextLine();
-                                queue.checkQueue(ic);
+                                queue.checkQueue(ic,patient);
                                 System.out.print("\nPress enter to continue...");
                                 in.nextLine();
                                 System.out.println();

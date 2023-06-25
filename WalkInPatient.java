@@ -4,6 +4,7 @@ public class WalkInPatient {
     private String name;
     private String IC;
     private String phonenumber;
+    private int queue;
     Scanner input;
 
     public WalkInPatient() {
@@ -21,6 +22,14 @@ public class WalkInPatient {
         System.out.print("Please enter your phone number: ");
         phonenumber = input.nextLine();
 
+    }
+
+    public int getQueue(){
+        return queue;
+    }
+
+    public void setQueue(int q){
+        queue=q;
     }
 
     public String getName() {

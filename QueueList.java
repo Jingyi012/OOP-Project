@@ -1,27 +1,27 @@
 import java.util.*;
-
 public class QueueList {
     ArrayList<WalkInPatient> patients = new ArrayList<WalkInPatient>();
+    public static int index=0;
     public QueueList() {
-
     }
 
     public void addQueue(WalkInPatient p) {
         patients.add(p);
+        index++;
     }
 
-    public void getQueueNumber(WalkInPatient p) {
-        int index = patients.indexOf(p);
-        System.out.println("Your Queue Number is " + (index + 1));
-
+    public int getQueueNumber(WalkInPatient p) {
+        System.out.println("Your Queue Number is " + index);
+        return index;
     }
 
-    public void checkQueue(String ic) {
+    public void checkQueue(String ic, WalkInPatient p) {
         boolean found = false;
         for (WalkInPatient patient : patients) {
             if (patient.getIC().equals(ic)) {
                 int index = patients.indexOf(patient);
-                System.out.println("Your current Queue Number is " + (index + 1));
+                System.out.println("Your Queue Number is " + patient.getQueue());
+                System.out.println("There are " + index+  " patient(s) in front of you");
                 found = true;
             }
         }
@@ -34,7 +34,7 @@ public class QueueList {
         Scanner input = new Scanner(System.in);
         if(patients.size()==0){
             System.out.println("There is no patient in the queue list");
-            System.out.print("Press Enter to continue...");
+            System.out.println("Press Enter to continue...");
             input.nextLine(); 
         }
         else{
