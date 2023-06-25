@@ -2,7 +2,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.*;
 
-public class Main {
+public class PatientAppointmentSystem {
 
     public static Admin admin;
 
@@ -686,9 +686,9 @@ public class Main {
 
     public static void displayMenu() {
         clearScreen();
-        System.out.println("============================= ");
-        System.out.println("       Hospital System        ");
-        System.out.println("============================= ");
+        System.out.println("=============================== ");
+        System.out.println("   Patient Appointment System   ");
+        System.out.println("=============================== ");
         System.out.println("----- Your Role -----");
         System.out.println("[1] Patient");
         System.out.println("[2] Doctor");
