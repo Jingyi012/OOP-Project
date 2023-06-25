@@ -598,14 +598,11 @@ public class PatientAppointmentSystem {
                                 System.out.println("\nUpdated Appointment List:");
 
                                 displayAppointmentList(appointmentList);
-
                               }
                              
                             }else{
                               System.out.println("\nAppointment not found.\n");
                             }
-
-         
                             }catch(InputMismatchException ex){
                                 in.nextLine();
                                 System.out.println("Invalid Input. Please enter a valid appointment ID (in number)");
